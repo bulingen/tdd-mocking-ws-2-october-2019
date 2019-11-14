@@ -1,12 +1,10 @@
 import java.util.List;
 
 public class PokemonService implements IPokemonService {
-    private final IUserDb userDb;
     private IExternalPaymentService paymentService;
 
-    public PokemonService(IExternalPaymentService externalPaymentService, IUserDb userDb) {
-        this.paymentService = externalPaymentService;
-        this.userDb = userDb;
+    public PokemonService() {
+        this.paymentService = new ExternalPaymentService();
     }
 
     @Override
@@ -16,8 +14,6 @@ public class PokemonService implements IPokemonService {
 
     @Override
     public Pokemon purchasePokemonToUser(User user) {
-        paymentService.pay();
-        userDb.save(user);
         return null;
     }
 }
